@@ -12,6 +12,16 @@ from django.http import JsonResponse
 # Create your views here.
 def home(request):
     return render(request,'home.html')
+def mcat(request):
+    return render(request,'mcat.html')
+def ecat(request):
+    return render(request,'ecat.html')
+def contact(request):
+    return render(request,'contactus.html')
+def aboutt(request):
+    return render(request,'about.html')
+def how(request):
+    return render(request,'howtouse.html')
 def loginredircect(request):
     return render(request,'login.html')
 def registerdirect(request):

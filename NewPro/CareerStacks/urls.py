@@ -11,6 +11,11 @@ urlpatterns=[
     path("login",views.UserLogin,name='userlogin'),
     path("query",views.query,name='query'),
     path("commentpost",views.query,name='query2'),
-    path("commentreply",views.commentreply,name='commentreply')
+    path("commentreply",views.commentreply,name='commentreply'),
+    path("howtouse", views.how, name='how'),
+    path("about", views.aboutt, name='about'),
+    path("mcat", views.mcat, name='mcat'),
+    path("ecat", views.ecat, name='ecat'),
+    path("contactus", views.contact, name='ecat'),
 ]
 urlpatterns=urlpatterns+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

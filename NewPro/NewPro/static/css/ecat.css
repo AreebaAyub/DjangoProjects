@@ -1,0 +1,101 @@
+body{
+	margin: 0;
+	padding: 0;
+	font-family: "Roboto", sans-serif; 
+    background-color: #e6e6ff;
+    
+}
+header{
+	background:#060606;
+	padding: 20px;
+	width:100%;
+	height:30px;
+}
+.h1{
+	font-size: 5em;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	top: 0%;
+	left: 0%;
+}
+
+.left_area h3{
+	color: #fff;
+	margin: 0;
+	text-transform: uppercase;
+	font-size: 22px
+	font-weight: 100;
+}
+.left_area span{
+	color: #e8de20;
+}
+#main{
+	font-size: 2em;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	top: 20%;
+	left: 20%;
+}
+#main h1{
+	 text-align: center;
+     height:40vh;
+     line-height: 40vh;
+	 color: #fcedd8;
+	 background: #78afeb;
+	 font-family: 'Niconne', cursive;
+	 font-weight: 700;
+     text-shadow: 5px 5px 0px #eb452b, 
+                  10px 10px 0px #efa032, 
+                  15px 15px 0px #46b59b, 
+                  20px 20px 0px #017e7f, 
+                  25px 25px 0px #052939, 
+                  30px 30px 0px #8ac2ff, 
+                  35px 35px 0px #8ac2ff, 
+                  40px 40px 0px #8ac2ff, 
+                  45px 45px 0px #8ac2ff;
+
+}
+#para{
+	font-size: 1.2em;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	top: 20%;
+	left: 20%;
+	color: #000000;
+	font-family: serif;
+}
+#uni{
+	
+	text-align: center;
+
+}
+#uni h2{
+	font-family: serif;
+	color: #000066;
+    word-spacing: 8px;
+	text-shadow: 2px 2px 5px #ccccff;
+	
+}
+
+#link {
+	
+	font-size: 1.3em;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	top: 20%;
+	left: 20%;
+	
+    
+}
+#link h4{
+	font-family: serif;
+	color: #000066;
+    word-spacing: 8px;
+	text-shadow: 2px 2px 5px #ccccff;
+	
+	
+}
