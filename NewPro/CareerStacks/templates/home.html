@@ -1,0 +1,54 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" dir="itr">
+<head>
+    <title>CareerStacks</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sidebar Dashboard Template</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <button class="btn btn1">MCAT</button>
+        <button class="btn btn2">ECAT</button>
+        <button class="btn btn3">IMPORTANT ANNOUCEMENTS</button>
+        <button class="btn btn4">WEBINARS</button>
+        <button class="btn btn5" ><a href="query">Post Your Queries Here</a></button>
+        <!--<button class="btn btn6">H6aaaaaa</button> -->
+    </div>
+<input type="checkbox" id="check">
+<header>
+    <label for="check">
+        <i class="fas fa-bars" id="sidebar_btn"></i>
+     
+    </label>
+	<div class="left_area">
+		<h3>Career <span> Stacks</span></h3>
+	</div>
+	<div class="right">
+		<a href="#" class="Logout_btn">Logout</a>
+	</div>
+</header>
+   
+
+    <div class="Sidebar">
+    	<center>
+    		<img src="{% static 'img/2.jpg' %}" class="profile_image" alt="">
+    		<h4 id='name'>{{username}}</h4>
+    	</center>
+    	<a href="login.html"><i class="fas fa-desktop"></i><span>User Login</span></a>
+    	<a href="#"><i class="fas fa-cogs"></i><span>How to Use?</span></a>
+    	<a href="#"><i class="fas fa-table"></i><span></span>Contact Us</a>
+    	<!--<a href="#"><i class="fas fa-th"></i><span>Forms</span></a> -->
+    	<a href="#"><i class="fas fa-info-circle"></i><span>About APP</span></a>
+    	<a href="#"><i class="fas fa-sliders-h"></i><span>Settings</span></a>
+    </div>
+
+    <div class="content">
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,140 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="{% static 'css/query.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+
+        <div class="row">
+            <h3>POST YOUR QUERY HERE</h3>
+        </div>
+        
+        <div class="row">
+        
+        <div class="col-md-6">
+        
+            
+                                <div class="widget-area no-padding blank">
+                                    <div class="status-upload">
+                                        <form method="POST" action='commentpost'>
+                                            {% csrf_token %}
+                                            <textarea name='content' placeholder="Do You want to Ask any Question?" ></textarea>
+                                            
+                                            <button type="submit" class="btn btn-success green"><i class="fa fa-share"></i> Post</button>
+                                        </form>
+                                    </div><!-- Status Upload  -->
+                                </div><!-- Widget Area -->
+                                <ul class="comment-list">
+                                    {% for cm in comments %}
+                                    <li>
+                                        <h3>{{cm.user.username}}</h3>
+                                        <div class="meta">{{cm.timestamp}}</div>
+                                        <p>{{cm.content}}</p>
+
+                                        <ul class="comment-list" id="commentList_{{forloop.counter}}">
+
+                                            {% if cm.getAllReplies %}
+                                                {% for rp in cm.getAllReplies %}
+                                                <li>
+                                                    <h3>{{rp.user.username}}</h3>
+                                                    <div class="meta">{{rp.timestamp}}</div>
+                                                    <p>{{rp.body}}</p>
+
+                                                </li>
+                                                {% endfor %}
+                                            {% endif %}
+                                        </ul>
+
+                                        <div class="widget-area no-padding blank" style="padding-left: 50px;">
+                                            <div class="status-upload">
+                
+                                                <form id="comment-form">
+                                                        <input name="comment_id" id="cmid_{{forloop.counter}}" value={{cm.id}}  type="hidden"  />
+                                                        <textarea id="body_{{forloop.counter}}" name='body' placeholder="Do You want to Ask any Question?" ></textarea>
+                                                        <!-- <input type="submit" class="btn btn-success green" value="replay"> -->
+                                                        <button type="button" class="btn btn-primary" onclick="post_reply('{{forloop.counter}}')">Reply</button>
+                                                </form>
+
+
+                                            </div>
+                                        </div>
+ 
+                                    </li>
+                                {% endfor %}
+                            </div>
+
+
+                            
+            
+        </div>
+    </div>
+</body>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+
+    function post_reply(id){
+        let reply_content = $(`#body_${id}`).val();
+        let cmid = $(`#cmid_${id}`).val();
+
+        if(reply_content && cmid){
+            $.ajax({
+                url:"{% url 'commentreply' %}",
+                type:"GET",
+                data: `reply=${reply_content}&cmid=${cmid}`,
+                success: (response)=>{ //this is the output
+                    var today = new Date();
+                    var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+                    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+                    var dateTime = date+' '+time;
+                    //console.log(response);
+                    $(`#commentList_${id}`).append(`         
+                        <li>
+                            <h3>${response.username}</h3>
+                            <div class="meta">${dateTime}</div>
+                            <p>${response.body}</p>
+
+                        </li>
+                    `);
+
+                    $(`#body_${id}`).val("");
+                }
+            })
+        }
+    
+    }
+
+
+    /*$('#comment-form').submit(function(){
+        $.ajax({
+            type:"GET",
+            url:"{% url 'commentreply' %}",
+            data:{"body":$("#body").val(),
+            csrfmiddlewaretoken: window.CSRF_TOKEN,
+            csrfmiddlewaretoken:"{{ csrf_token }}"},
+            beforeSend:function(xhr){
+                xhr.setRequestHeader("X-CSRFToken", $.cookie('csrftoken'));  
+            },
+            success:function(data,textStatus){
+                $("#body").val("");
+                $("#body").prepend(data);
+            },
+            error:function(XMLHttpRequest, textStatus, errorThrown){
+                alert(XMLHttpRequest.responseText);
+    
+            }
+    
+        });
+        return false;
+    });*/
+
+</script>
+
+</html>
