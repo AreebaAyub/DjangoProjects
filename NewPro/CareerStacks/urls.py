@@ -17,5 +17,6 @@ urlpatterns=[
     path("mcat", views.mcat, name='mcat'),
     path("ecat", views.ecat, name='ecat'),
     path("contactus", views.contact, name='ecat'),
+    path("annouce", views.annouce, name='annouce'),
 ]
 urlpatterns=urlpatterns+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

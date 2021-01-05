@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>POST ANNOUCEMENTS</h1>
+    <div class="status-upload">
+        <form method="POST" action='annouce'>
+            {% csrf_token %}
+            <textarea name='content' ></textarea>
+            
+            <button type="submit" class="btn btn-success green"><i class="fa fa-share"></i> Post</button>
+        </form>
+        <h1>IMPORTANT ANNOUCEMENTS</h1>
+           
+                    <ul class="comment-list">
+                            {% for pp in comments %}
+                                <li>
+                                        <h5>{{pp.user.username}}</h5>
+                                        <div class="meta">{{pp.timestamp}}</div>
+                                        <p style="color:blue;">{{pp.content}}</p>
+                                </li>
+                            {% endfor %}
+                    </ul>
+                
+                        
+</body>
+</html>

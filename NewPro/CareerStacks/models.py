@@ -34,6 +34,13 @@ class Reply(models.Model):
     def __str__(self):
         return '{}'.format(str(self.user.username),self.body)
 
+class PostAnn(models.Model):
+    
+    user=models.ForeignKey(User,on_delete=models.PROTECT)
+    #reply=models.ForeignKey('self', null=True, related_name='replies',on_delete=models.PROTECT, blank=True )
+    content=models.TextField(max_length=160, null=True)
+    #replies=models.TextField(max_length=160)
+    timestamp=models.DateTimeField(auto_now_add=True)
 
 
 

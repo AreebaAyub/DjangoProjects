@@ -4,7 +4,7 @@ from django.template import context
 from django.contrib.auth.models import User, auth
 from django.views.decorators.csrf import csrf_protect
 from django.utils.datastructures import MultiValueDictKeyError
-from .models import Destination, Comment, Reply
+from .models import Destination, Comment, Reply, PostAnn
 from django.contrib import messages
 from django.template.loader import render_to_string
 from django.http import JsonResponse
@@ -88,3 +88,19 @@ def commentreply(request):
 
     # html = render_to_string('query.html', {'rList': rList})
     return JsonResponse(output)
+
+#important annoucement
+def annouce(request):
+    obj2=PostAnn()
+    if request.method=='POST':
+
+        obj2.user=request.user
+        obj2.content= request.POST.get('content')
+        obj2.save()
+
+    pst= PostAnn.objects.all().order_by("-id")
+    parms={
+        'comments':pst,
+        }
+
+    return render(request,'annouce.html',parms)
